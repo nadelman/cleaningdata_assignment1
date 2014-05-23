@@ -11,7 +11,7 @@ The run_analysis function is the entry point for generating the first data set. 
 
 2. Create a data frame for the test data, a second data from for the y data, and combine the two using rbind to obtain a sinlge large data set. A single function, processDirectory, is used to form a data frame from the combination of an X, Y, and subject file within a given directory (either test or train, in this case)
 
-3. The columns to retain are determined as follows: the columsn representing the subject and their activity for the observation (the "subject", "class", and "activity" columns) are retained. For the observation columns, the column is removed from the data set if it does not contiain the text "mean" (case insensitive) or the text "std".
+3. The columns to retain are determined as follows: the columsn representing the subject and their activity for the observation (the "subject", "class", and "activity" columns) are retained. For the observation columns, the column is removed from the data set if it does not contiain the text "mean()" (case insensitive) or the text "std". Note that we do remove the meanFreq() variables, and they are not semantically the same as the mean() variables (see feature descriptions for data set).
 
 4. An additional activity column is added to the end of the data frame. This is a tranlsation of the "class" column to a readable acitivty name value. The names for the activity are read from the activity_label.txt file. It is assumed that the position of an acitivity name in that file corresponds to the number (index) of each y value in the testing and traingin sets.
 
