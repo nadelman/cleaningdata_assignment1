@@ -32,8 +32,10 @@ run_analysis <- function(directory) {
   # write dataset to output file
   write.table(totalDF, "./Human_Activity_Recognition_Dataset1.txt")
   
+  # generate dataset 2
   dataSet2 <- generateMeansDataset(totalDF)
   
+  # write second data set to file
   write.table(dataSet2, "./Human_Activity_Recognition_Dataset2.txt")
 }
 
@@ -110,6 +112,9 @@ resolveColsToKeep <- function(colNames) {
 
 ##
 # Create a list of all of the feature names for the data frame, based in most part of the features.txt file
+#
+# The list returned starts with "subject", followed by all of the features from the features.txt file,
+# followed by a "class" column for the y values (activity values)
 ##
 generateSubjectLabels <- function(directory) {
     featureFile <- paste(directory, "//", "features.txt", sep = "")

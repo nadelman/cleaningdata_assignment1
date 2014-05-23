@@ -1,11 +1,15 @@
-cleaningdata_assignment1
+##cleaningdata_assignment1
 ========================
 
 Assignment for getting and cleaning data course
 
-Methodology:
+## Methodology:
 
-The run_analysis function is the entry point for generating the first data set. It follows this methodolgy:
+The run_analysis function is the entry point for generating both data sets. 
+
+# Data set 1
+
+The generation of the first data set follows this methodolgy:
 
 1. generate a list of column names. The first column name will be "subject" (this column will be sourced from the subject files). The last column will be named "class" (the classification of the observation, sourced from the y data files). In between will be the X data (feature observation data, sourced from the X files). The column names for all of these will be read from the features.txt file. As part of this process, the column names for the features are scrubbed by removing the "()" and converting any "-" to "." instead. A more thorough approach would have been to leverage the information in the feature_info file and create a hard-coded list of labels. The approach used here was more programatic, as a time-saver, but the results are not optimal.
 
@@ -15,5 +19,13 @@ The run_analysis function is the entry point for generating the first data set. 
 
 4. An additional activity column is added to the end of the data frame. This is a tranlsation of the "class" column to a readable acitivty name value. The names for the activity are read from the activity_label.txt file. It is assumed that the position of an acitivity name in that file corresponds to the number (index) of each y value in the testing and traingin sets.
 
+# Data set 2
 
-The second data set is generated via the generate_means function, which is called separately. The input to this method should be the data set output by the run_analaysis method.
+The second data set is generated via the generate_means function, which is called separately. The input to this method should be the data set output by the run_analaysis method. 
+
+The methodolgy for the second data set generation is as follows:
+
+1. melt the dataset on subject + activity, using all of the selected fields from features.txt as the measurement variables. This
+results in each measurement being separated by the combincation of subject + activity
+
+2. Take the melted dataset and apply the dcast operation to apply the mean operation to each varible set grouped by subject + activity 
